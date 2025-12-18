@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_push.c                                        :+:      :+:    :+:   */
+/*   algo_cost2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ynabti <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/16 21:28:21 by ynabti            #+#    #+#             */
-/*   Updated: 2025/12/16 21:44:19 by ynabti           ###   ########.fr       */
+/*   Created: 2025/12/18 14:05:42 by ynabti            #+#    #+#             */
+/*   Updated: 2025/12/18 14:07:37 by ynabti           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.c"
+#include "push_swap.h"
+#include <limits.h>
 
-void	push_non_keep_to_B(t_stack *a, t_stack *b)
+static int	ft_abs(int x)
 {
-	int	i;
+	if (x < 0)
+		return (-x);
+	return (x);
+}
 
-	i = a->size;
-	while(i--)
-	{
-		if (a->top->keep == 0)
-			pb(a, b);
-		else
-			ra(a);
-	}
+static int	max_int(int a, int b)
+{
+	if (a > b)
+		return (a);
+	return (b);
 }

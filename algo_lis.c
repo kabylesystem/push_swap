@@ -6,9 +6,42 @@
 /*   By: ynabti <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 00:50:42 by ynabti            #+#    #+#             */
-/*   Updated: 2025/12/11 01:55:40 by ynabti           ###   ########.fr       */
+/*   Updated: 2025/12/16 21:22:13 by ynabti           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
+
+int	*malloc_tab(int size);
+void	indextab(t_stack *a, int *tab);
+void	compute_lis(int *tab, int *lis, int size);
+int	find_the_longest_lis(int *lis, int size);
+void	reconstruct_lis(int *lis, int *tab, int *keep, int end);
+void	mark_keep_nodes(t_stack *a, int *keep);
+
+void	lis_main(t_stack *a)
+{
+	int	*tab;
+	int	*lis;
+	int	*keep;
+	int	size;
+	int	end;
+
+	size = a->size;
+	tab = malloc_tab(size);
+	lis = malloc_tab(size);
+	keep = malloc_tab(size);
+	if (!tab || !lis || !keep)
+		return ;
+	indextab(a, tab);
+	compute_lis(tab, lis, size);
+	end = find_the_longest_lis(lis, size);
+	reconstruct_lis(lis, tab, keep, end);
+	mark_keep_nodes(a, keep);
+	free(tab);
+	free(lis);
+	free(keep);
+}
 
 int	*malloc_tab(int size)
 {
@@ -46,7 +79,7 @@ void	compute_lis(int *tab, int *lis, int size)
 		j = 0;
 		while (j < i)
 		{
-			if (tab[j] > tab[i] && lis[j] + 1 > lis[i])
+			if (tab[j] < tab[i] && lis[j] + 1 > lis[i])
 				lis[i] = lis[j] + 1;
 			j++;
 		}
@@ -106,28 +139,4 @@ void	mark_keep_nodes(t_stack *a, int *keep)
 		tmp = tmp->next;
 		i++;
 	}
-}
-
-void	lis_main(t_stack *a)
-{
-	int	*tab;
-	int	*lis;
-	int	*keep;
-	int	size;
-	int	end;
-
-	size = a->size;
-	tab = malloc_tab(size);
-	lis = malloc_tab(size);
-	keep = malloc_tab(size);
-	if (!tab || !lis || !keep)
-		return ;
-	indextab(a, tab);
-	compute_lis(tab, lis, size);
-	end = find_the_longest_lis(lis, size);
-	reconstruct_lis(lis, tab, keep, end);
-	mark_keep_nodes(a, keep);
-	free(tab);
-	free(lis);
-	free(keep);
 }
