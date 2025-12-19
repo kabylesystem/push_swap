@@ -6,9 +6,12 @@
 /*   By: ynabti <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 21:53:11 by ynabti            #+#    #+#             */
-/*   Updated: 2025/12/18 13:25:18 by ynabti           ###   ########.fr       */
+/*   Updated: 2025/12/18 22:53:58 by ynabti           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
+#include <limits.h>
 
 void	update_positions(t_stack *s)
 {
@@ -17,7 +20,7 @@ void	update_positions(t_stack *s)
 
 	tmp = s->top;
 	i = 0;
-	while(tmp)
+	while (tmp)
 	{
 		tmp->pos = i;
 		tmp=tmp->next;
@@ -59,9 +62,12 @@ int	get_min_pos(t_stack *a)
 	int	min_index;
 	int	min_pos;
 
+	if (!a || !a->top)
+		return (0);
 	tmp = a->top;
 	min_index = INT_MAX;
-	while(tmp)
+	min_pos = tp->pos;
+	while (tmp)
 	{
 		if (tmp->index < min_index)
 		{
@@ -85,10 +91,10 @@ void	set_moves(t_stack *a, t_stack *b)
 	t_node	*nb;
 
 	nb = b->top;
-	while(nb)
+	while (nb)
 	{
 		nb->cost_b = calc_cost(nb->pos, b->size);
-		nb->cost_a = calc_cost(nb->target_pos, a->size)
+		nb->cost_a = calc_cost(nb->target_pos, a->size);
 		nb = nb->next;
 	}
 }
