@@ -11,11 +11,10 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <limits.h>
 
 void	update_positions(t_stack *s)
 {
-	t_node *tmp;
+	t_node	*tmp;
 	int	i;
 
 	tmp = s->top;
@@ -30,8 +29,8 @@ void	update_positions(t_stack *s)
 
 void	set_target_positions(t_stack *a, t_stack *b)
 {
-	t_node *nb;
-	t_node *na;
+	t_node	*nb;
+	t_node	*na;
 	int	best_index;
 	int	target;
 
@@ -66,14 +65,14 @@ int	get_min_pos(t_stack *a)
 		return (0);
 	tmp = a->top;
 	min_index = INT_MAX;
-	min_pos = tp->pos;
+	min_pos = tmp->pos;
 	while (tmp)
 	{
 		if (tmp->index < min_index)
 		{
 			min_index = tmp->index;
 			min_pos = tmp->pos;
-		}	
+		}
 		tmp = tmp->next;	
 	}
 	return (min_pos);

@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_push.c                                        :+:      :+:    :+:   */
+/*   ops_rev_rotates.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ynabti <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/16 21:28:21 by ynabti            #+#    #+#             */
-/*   Updated: 2025/12/16 21:44:19 by ynabti           ###   ########.fr       */
+/*   Created: 2025/12/18 21:47:09 by ynabti            #+#    #+#             */
+/*   Updated: 2025/12/18 23:07:34 by ynabti           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.c"
+#include "push_swap.h"
 
-void	push_non_keep_to_B(t_stack *a, t_stack *b)
+void	rra(t_stack *a)
 {
-	int	i;
+	if (do_rev_rotate(a))
+		put_op("rra\n");
+}
 
-	i = a->size;
-	while(i--)
-	{
-		if (a->top->keep == 0)
-			pb(a, b);
-		else
-			ra(a);
-	}
+void	rrb(t_stack *b)
+{
+	if (do_rev_rotate(b))
+		put_op("rrb\n");
+}
+
+void	rrr(t_stack *a, t_stack *b)
+{
+	int	x;
+	int	y;
+
+	x = do_rev_rotate(a);
+	y = do_rev_rotate(b);
+	if (x || y)
+		put_op("rrr\n");
 }

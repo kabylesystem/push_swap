@@ -58,5 +58,5 @@ void	align_a(t_stack *a)
 		min_pos = min_pos - a->size;
 		while (min_pos++ < 0)
 			rra(a);
-	}	
+	}
 }

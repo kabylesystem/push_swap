@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdio.h>
 
 typedef struct s_node
 {
@@ -57,6 +58,12 @@ void	bubble_sort(int *tab, int size);
 void	indexer(t_stack *a, int *tab);
 
 void	lis_main(t_stack *a);
+int	*malloc_tab(int size);
+void	indextab(t_stack *a, int *tab);
+void	compute_lis(int *tab, int *lis, int size);
+int	find_the_longest_lis(int *lis, int size);
+void	reconstruct_lis(int *lis, int *tab, int *keep, int end);
+void	mark_keep_nodes(t_stack *a, int *keep);
 
 void	update_positions(t_stack *s);
 int		get_min_pos(t_stack *a);
@@ -70,6 +77,8 @@ void	apply_rotations(t_stack *a, t_stack *b, int *ca, int *cb);
 void	move_node(t_stack *a, t_stack *b, t_node *nb);
 void	insert_all(t_stack *a, t_stack *b);
 void	align_a(t_stack *a);
+
+void	push_non_keep_to_B(t_stack *a, t_stack *b);
 
 void	push_swap(t_stack *a, t_stack *b);
 
@@ -85,6 +94,12 @@ void	ss(t_stack *a, t_stack *b);
 
 void	pa(t_stack *a, t_stack *b);
 void	pb(t_stack *a, t_stack *b);
+
+int		do_swap(t_stack *s);
+int		do_push(t_stack *dst, t_stack *src);
+int		do_rotate(t_stack *s);
+int		do_rev_rotate(t_stack *s);
+void	put_op(const char *s);
 
 void	ra(t_stack *a);
 void	rb(t_stack *b);

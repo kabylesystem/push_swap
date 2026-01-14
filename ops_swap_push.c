@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ops_swap_push.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ynabti <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,26 +12,37 @@
 
 #include "push_swap.h"
 
-void	init_stack(t_stack *s)
+void    sa(t_stack *a)
 {
-	if (!s)
-		return ;
-	s->top = NULL;
-	s->size = 0;
+    if (do_swap(a))
+        put_op("sa\n");
 }
 
-int	main(int ac, char **av)
+void   sb(t_stack *b)
 {
-	t_stack	a;
-	t_stack	b;
+    if (do_swap(b))
+        put_op("sb\n");
+}
 
-	if (ac < 2)
-		return (0);
-	init_stack(&a);
-	init_stack(&b);
-	parse(ac, av, &a);
-	push_swap(&a, &b);
-	free_stack(&a);
-	free_stack(&b);
-	return (0);
+void    ss(t_stack *a, t_stack *b)
+{
+    int x;
+    int y;
+
+    x = do_swap(a);
+    y = do_swap(b);
+    if (x || y)
+        put_op("ss\n");
+}
+
+void	pa(t_stack *a, t_stack *b)
+{
+	if (do_push(a, b))
+		put_op("pa\n");
+}
+
+void	pb(t_stack *a, t_stack *b)
+{
+	if (do_push(b, a))
+		put_op("pb\n");
 }

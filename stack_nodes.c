@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   stack_nodes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ynabti <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,26 +12,58 @@
 
 #include "push_swap.h"
 
-void	init_stack(t_stack *s)
+static t_node   *ft_lstlast(t_node *n)
 {
-	if (!s)
-		return ;
-	s->top = NULL;
-	s->size = 0;
+	while (n && (n->next))
+		n = n->next;
+	return (n);
 }
 
-int	main(int ac, char **av)
+t_node  *ft_lstnew(int value)
 {
-	t_stack	a;
-	t_stack	b;
+	t_node  *node;
 
-	if (ac < 2)
-		return (0);
-	init_stack(&a);
-	init_stack(&b);
-	parse(ac, av, &a);
-	push_swap(&a, &b);
-	free_stack(&a);
-	free_stack(&b);
-	return (0);
+	node = (t_node *)malloc(sizeof(t_node));
+	if (!node)
+		return (NULL);
+	node->value = value;
+	node->index = 0;
+	node->pos = 0;
+	node->target_pos = 0;
+	node->cost_a = 0;
+	node->cost_b = 0;
+	node->keep = 0;
+	node->next = NULL;
+	return (node);
+}
+
+void	ft_lstadd_back(t_stack *a, t_node *new)
+{
+	t_node	*last;
+
+	if (!a || !new)
+		return ;
+	if (!a->top)
+		a->top = new;
+	else
+	{
+		last = ft_lstlast(a->top);
+		last->next = new;
+	}
+	a->size++;
+}
+
+void    free_stack(t_stack *s)
+{
+	t_node  *tmp;
+
+	if (!s)
+		return ;
+	while (s->top)
+	{
+		tmp = s->top->next;
+		free(s->top);
+		s->top = tmp;
+	}
+	s->size = 0;
 }

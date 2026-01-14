@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ops_rotates.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ynabti <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,26 +12,25 @@
 
 #include "push_swap.h"
 
-void	init_stack(t_stack *s)
+void	ra(t_stack *a)
 {
-	if (!s)
-		return ;
-	s->top = NULL;
-	s->size = 0;
+	if (do_rotate(a))
+		put_op("ra\n");
 }
 
-int	main(int ac, char **av)
+void	rb(t_stack *b)
 {
-	t_stack	a;
-	t_stack	b;
+	if (do_rotate(b))
+		put_op("rb\n");
+}
 
-	if (ac < 2)
-		return (0);
-	init_stack(&a);
-	init_stack(&b);
-	parse(ac, av, &a);
-	push_swap(&a, &b);
-	free_stack(&a);
-	free_stack(&b);
-	return (0);
+void	rr(t_stack *a, t_stack *b)
+{
+	int	x;
+	int	y;
+
+	x = do_rotate(a);
+	y = do_rotate(b);
+	if (x || y)
+		put_op("rr\n");
 }

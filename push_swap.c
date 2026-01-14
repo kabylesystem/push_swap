@@ -18,6 +18,7 @@ void	push_swap(t_stack *a, t_stack *b)
 		return ;
 	if (is_sorted(a))
 		return ;
+	assign_index(a);
 	if (a->size == 2)
 		sort_2(a);
 	else if (a->size == 3)
