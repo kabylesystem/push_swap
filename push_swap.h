@@ -13,28 +13,30 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-# include <stdio.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 typedef struct s_node
 {
-	int	value;
-	int	index;
-	int	pos;
-	int	target_pos;
-	int	cost_a;
-	int	cost_b;
-	int	keep;
+	int				value;
+	int				index;
+	int				pos;
+	int				target_pos;
+	int				cost_a;
+	int				cost_b;
+	int				keep;
 	struct s_node	*next;
 }	t_node;
 
 typedef struct s_stack
 {
 	t_node	*top;
-	int	size;
+	int		size;
 }	t_stack;
 
 void	init_stack(t_stack *s);
@@ -52,16 +54,15 @@ int		is_digit(int c);
 t_node	*ft_lstnew(int value);
 void	ft_lstadd_back(t_stack *a, t_node *new);
 
-
 void	assign_index(t_stack *a);
 void	bubble_sort(int *tab, int size);
 void	indexer(t_stack *a, int *tab);
 
 void	lis_main(t_stack *a);
-int	*malloc_tab(int size);
+int		*malloc_tab(int size);
 void	indextab(t_stack *a, int *tab);
 void	compute_lis(int *tab, int *lis, int size);
-int	find_the_longest_lis(int *lis, int size);
+int		find_the_longest_lis(int *lis, int size);
 void	reconstruct_lis(int *lis, int *tab, int *keep, int end);
 void	mark_keep_nodes(t_stack *a, int *keep);
 
@@ -70,7 +71,6 @@ int		get_min_pos(t_stack *a);
 void	set_target_positions(t_stack *a, t_stack *b);
 void	set_moves(t_stack *a, t_stack *b);
 
-
 t_node	*get_cheapest(t_stack *b);
 
 void	apply_rotations(t_stack *a, t_stack *b, int *ca, int *cb);
@@ -78,7 +78,7 @@ void	move_node(t_stack *a, t_stack *b, t_node *nb);
 void	insert_all(t_stack *a, t_stack *b);
 void	align_a(t_stack *a);
 
-void	push_non_keep_to_B(t_stack *a, t_stack *b);
+void	push_non_keep_to_b(t_stack *a, t_stack *b);
 
 void	push_swap(t_stack *a, t_stack *b);
 
@@ -108,5 +108,11 @@ void	rr(t_stack *a, t_stack *b);
 void	rra(t_stack *a);
 void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
+
+char	*get_next_line(int fd);
+size_t	gnl_strlen(const char *s);
+char	*gnl_strdup(const char *s1);
+char	*gnl_strchr(const char *s, int c);
+char	*gnl_strjoin(const char *s1, const char *s2);
 
 #endif

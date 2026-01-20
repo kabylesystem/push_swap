@@ -12,12 +12,10 @@
 
 #include "push_swap.h"
 
-int	*malloc_tab(int size);
+int		*malloc_tab(int size);
 void	indextab(t_stack *a, int *tab);
 void	compute_lis(int *tab, int *lis, int size);
-int	find_the_longest_lis(int *lis, int size);
-void	reconstruct_lis(int *lis, int *tab, int *keep, int end);
-void	mark_keep_nodes(t_stack *a, int *keep);
+int		find_the_longest_lis(int *lis, int size);
 
 void	lis_main(t_stack *a)
 {
@@ -43,31 +41,17 @@ void	lis_main(t_stack *a)
 	free(keep);
 }
 
-int	*malloc_tab(int size)
-{
-	int	*tab;
-	int	i;
-
-	tab = malloc(sizeof(int) * size);
-	if (!tab)
-		return (NULL);
-	i = 0;
-	while (i < size)
-		tab[i++] = 0;
-	return (tab);
-}
-
 void	indextab(t_stack *a, int *tab)
 {
 	t_node	*tmp;
-	int	i;
+	int		i;
 
 	tmp = a->top;
 	i = 0;
-	while(tmp)
+	while (tmp)
 	{
 		tab[i++] = tmp->index;
-		tmp=tmp->next;
+		tmp = tmp->next;
 	}
 }
 
@@ -93,14 +77,12 @@ static int	binary_search(int *tail, int tail_len, int x)
 void	compute_lis(int *tab, int *lis, int size)
 {
 	int	*tail;
-	int	*parent;
 	int	tail_len;
 	int	i;
 	int	pos;
 
 	tail = malloc(sizeof(int) * size);
-	parent = malloc(sizeof(int) * size);
-	if (!tail || !parent)
+	if (!tail)
 		return ;
 	tail_len = 0;
 	i = 0;
@@ -108,14 +90,12 @@ void	compute_lis(int *tab, int *lis, int size)
 	{
 		pos = binary_search(tail, tail_len, tab[i]);
 		tail[pos] = tab[i];
-		parent[i] = (pos > 0) ? tail[pos - 1] : -1;
 		if (pos == tail_len)
 			tail_len++;
 		lis[i] = pos + 1;
 		i++;
 	}
 	free(tail);
-	free(parent);
 }
 
 int	find_the_longest_lis(int *lis, int size)

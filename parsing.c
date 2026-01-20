@@ -15,7 +15,7 @@
 void	parse(int argc, char **argv, t_stack *a)
 {
 	char	**tokens;
-	int	i;
+	int		i;
 
 	i = 1;
 	while (i < argc)
@@ -42,7 +42,7 @@ void	free_split(char **tab)
 
 int	process_tokens(char **tokens, t_stack *a)
 {
-	 int		i;
+	int		i;
 	int		j;
 	long	nb;
 
@@ -69,13 +69,12 @@ int	process_tokens(char **tokens, t_stack *a)
 	return (1);
 }
 
-
-
 int	check_duplicates(t_stack *a)
 {
-	t_node *i = a->top;
-	t_node *j;
+	t_node	*i;
+	t_node	*j;
 
+	i = a->top;
 	while (i)
 	{
 		j = i->next;
@@ -90,8 +89,8 @@ int	check_duplicates(t_stack *a)
 	return (1);
 }
 
-void error_exit(void)
+void	error_exit(void)
 {
-    write(2, "Error\n", 6);
-    exit(1);
+	write(2, "Error\n", 6);
+	exit(1);
 }

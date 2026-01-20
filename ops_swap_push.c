@@ -12,27 +12,27 @@
 
 #include "push_swap.h"
 
-void    sa(t_stack *a)
+void	sa(t_stack *a)
 {
-    if (do_swap(a))
-        put_op("sa\n");
+	if (do_swap(a))
+		put_op("sa\n");
 }
 
-void   sb(t_stack *b)
+void	sb(t_stack *b)
 {
-    if (do_swap(b))
-        put_op("sb\n");
+	if (do_swap(b))
+		put_op("sb\n");
 }
 
-void    ss(t_stack *a, t_stack *b)
+void	ss(t_stack *a, t_stack *b)
 {
-    int x;
-    int y;
+	int	x;
+	int	y;
 
-    x = do_swap(a);
-    y = do_swap(b);
-    if (x || y)
-        put_op("ss\n");
+	x = do_swap(a);
+	y = do_swap(b);
+	if (x || y)
+		put_op("ss\n");
 }
 
 void	pa(t_stack *a, t_stack *b)

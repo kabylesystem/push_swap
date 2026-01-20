@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-void	push_non_keep_to_B(t_stack *a, t_stack *b)
+void	push_non_keep_to_b(t_stack *a, t_stack *b)
 {
 	int	i;
 
 	i = a->size;
-	while(i--)
+	while (i--)
 	{
 		if (a->top->keep == 0)
 			pb(a, b);
@@ -25,10 +25,11 @@ void	push_non_keep_to_B(t_stack *a, t_stack *b)
 			ra(a);
 	}
 }
+
 void	sort_big(t_stack *a, t_stack *b)
 {
 	lis_main(a);
-	push_non_keep_to_B(a, b);
+	push_non_keep_to_b(a, b);
 	insert_all(a, b);
 	align_a(a);
 }

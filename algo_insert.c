@@ -36,7 +36,7 @@ void	insert_all(t_stack *a, t_stack *b)
 		set_target_positions(a, b);
 		set_moves(a, b);
 		cheapest = get_cheapest(b);
-		move_node (a, b, cheapest);
+		move_node(a, b, cheapest);
 	}
 }
 
@@ -51,7 +51,7 @@ void	align_a(t_stack *a)
 	if (min_pos <= a->size / 2)
 	{
 		while (min_pos-- > 0)
-			ra(a);		
+			ra(a);
 	}
 	else
 	{

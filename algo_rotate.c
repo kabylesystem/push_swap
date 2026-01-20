@@ -42,7 +42,7 @@ static void	rotate_a(t_stack *a, int *ca)
 	}
 }
 
-static void     rotate_b(t_stack *b, int *cb)
+static void	rotate_b(t_stack *b, int *cb)
 {
 	while (*cb > 0)
 	{

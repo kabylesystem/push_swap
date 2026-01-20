@@ -12,14 +12,6 @@
 
 #include "push_swap.h"
 
-void	init_stack(t_stack *s)
-{
-	if (!s)
-		return ;
-	s->top = NULL;
-	s->size = 0;
-}
-
 int	main(int ac, char **av)
 {
 	t_stack	a;

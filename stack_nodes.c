@@ -12,16 +12,24 @@
 
 #include "push_swap.h"
 
-static t_node   *ft_lstlast(t_node *n)
+void	init_stack(t_stack *s)
+{
+	if (!s)
+		return ;
+	s->top = NULL;
+	s->size = 0;
+}
+
+static t_node	*ft_lstlast(t_node *n)
 {
 	while (n && (n->next))
 		n = n->next;
 	return (n);
 }
 
-t_node  *ft_lstnew(int value)
+t_node	*ft_lstnew(int value)
 {
-	t_node  *node;
+	t_node	*node;
 
 	node = (t_node *)malloc(sizeof(t_node));
 	if (!node)
@@ -53,9 +61,9 @@ void	ft_lstadd_back(t_stack *a, t_node *new)
 	a->size++;
 }
 
-void    free_stack(t_stack *s)
+void	free_stack(t_stack *s)
 {
-	t_node  *tmp;
+	t_node	*tmp;
 
 	if (!s)
 		return ;

@@ -33,13 +33,13 @@ static int	total_cost(int cost_a, int cost_b)
 	return (ft_abs(cost_a) + ft_abs(cost_b));
 }
 
-t_node *get_cheapest(t_stack *b)
+t_node	*get_cheapest(t_stack *b)
 {
-	t_node *tmp;
-	t_node *cheapest;
-	int	best;
-	int	cost;
-	
+	t_node	*tmp;
+	t_node	*cheapest;
+	int		best;
+	int		cost;
+
 	if (!b || !b->top)
 		return (NULL);
 	tmp = b->top;
@@ -53,7 +53,7 @@ t_node *get_cheapest(t_stack *b)
 			best = cost;
 			cheapest = tmp;
 		}
-		tmp=tmp->next;
+		tmp = tmp->next;
 	}
 	return (cheapest);
 }

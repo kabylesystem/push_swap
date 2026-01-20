@@ -15,14 +15,14 @@
 void	update_positions(t_stack *s)
 {
 	t_node	*tmp;
-	int	i;
+	int		i;
 
 	tmp = s->top;
 	i = 0;
 	while (tmp)
 	{
 		tmp->pos = i;
-		tmp=tmp->next;
+		tmp = tmp->next;
 		i++;
 	}
 }
@@ -31,8 +31,8 @@ void	set_target_positions(t_stack *a, t_stack *b)
 {
 	t_node	*nb;
 	t_node	*na;
-	int	best_index;
-	int	target;
+	int		best_index;
+	int		target;
 
 	nb = b->top;
 	while (nb)
@@ -58,8 +58,8 @@ void	set_target_positions(t_stack *a, t_stack *b)
 int	get_min_pos(t_stack *a)
 {
 	t_node	*tmp;
-	int	min_index;
-	int	min_pos;
+	int		min_index;
+	int		min_pos;
 
 	if (!a || !a->top)
 		return (0);
@@ -73,7 +73,7 @@ int	get_min_pos(t_stack *a)
 			min_index = tmp->index;
 			min_pos = tmp->pos;
 		}
-		tmp = tmp->next;	
+		tmp = tmp->next;
 	}
 	return (min_pos);
 }

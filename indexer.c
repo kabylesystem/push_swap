@@ -14,9 +14,9 @@
 
 void	assign_index(t_stack *a)
 {
-	int	*tab;
-	int	i;
-	t_node *tmp;
+	int		*tab;
+	int		i;
+	t_node	*tmp;
 
 	tmp = a->top;
 	tab = malloc(sizeof(int) * a->size);
@@ -59,9 +59,9 @@ void	bubble_sort(int *tab, int size)
 }
 
 void	indexer(t_stack *a, int *tab)
-{	
-	t_node *tmp;
-	int	i;
+{
+	t_node	*tmp;
+	int		i;
 
 	tmp = a->top;
 	while (tmp)
@@ -72,7 +72,7 @@ void	indexer(t_stack *a, int *tab)
 			if (tab[i] == tmp->value)
 			{
 				tmp->index = i;
-				break;
+				break ;
 			}
 			i++;
 		}

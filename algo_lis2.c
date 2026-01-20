@@ -12,39 +12,53 @@
 
 #include "push_swap.h"
 
-void    reconstruct_lis(int *lis, int *tab, int *keep, int end)
+int	*malloc_tab(int size)
 {
-        int     i;
-        int     current_len;
-        int     current_val;
+	int	*tab;
+	int	i;
 
-        current_len = lis[end];
-        current_val = tab[end];
-        keep[end] = 1;
-        i = end - 1;
-        while (i >= 0)
-        {
-                if (tab[i] < current_val && lis[i] == current_len - 1)
-                {
-                        keep[i] = 1;
-                        current_val = tab[i];
-                        current_len = lis[i];
-                }
-                i--;
-        }
+	tab = malloc(sizeof(int) * size);
+	if (!tab)
+		return (NULL);
+	i = 0;
+	while (i < size)
+		tab[i++] = 0;
+	return (tab);
 }
 
-void    mark_keep_nodes(t_stack *a, int *keep)
+void	reconstruct_lis(int *lis, int *tab, int *keep, int end)
 {
-        t_node *tmp;
-        int     i;
+	int	i;
+	int	current_len;
+	int	current_val;
 
-        i = 0;
-        tmp = a->top;
-        while(tmp)
-        {
-                tmp->keep = keep[i];
-                tmp = tmp->next;
-                i++;
-        }
+	current_len = lis[end];
+	current_val = tab[end];
+	keep[end] = 1;
+	i = end - 1;
+	while (i >= 0)
+	{
+		if (tab[i] < current_val && lis[i] == current_len - 1)
+		{
+			keep[i] = 1;
+			current_val = tab[i];
+			current_len = lis[i];
+		}
+		i--;
+	}
+}
+
+void	mark_keep_nodes(t_stack *a, int *keep)
+{
+	t_node	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = a->top;
+	while (tmp)
+	{
+		tmp->keep = keep[i];
+		tmp = tmp->next;
+		i++;
+	}
 }
